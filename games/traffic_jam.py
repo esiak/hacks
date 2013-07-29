@@ -27,6 +27,16 @@ def jump_over(array, position):
 	elif re.match("[0-9]?", array[position]):
 		swap(array, position - 2, position)
 
+def move_loop(jam , size, i):
+	index =  size + i if i %2 == 0 else size - i
+	move_forward(jam, index)
+	print jam
+	for j in range(0, i ):
+		step =  -2 if index %2 == 0 else 2
+		jump_index = index + (j+1)*step
+		jump_over(jam, jump_index)
+		print jam
+
 def init_array(size):
 	array = [None]*(2*size + 1)
 	for i in range(0,size):
@@ -43,23 +53,9 @@ if __name__ == '__main__':
 	print 'Initial position:'
 	print jam
 	for i in range(1 , size + 1):
-		index =  size + i if i %2 == 0 else size - i
-		move_forward(jam, index)
-		print jam
-		for j in range(0, i ):
-			step =  -2 if index %2 == 0 else 2
-			jump_index = index + (j+1)*step
-			jump_over(jam, jump_index)
-			print jam
+		move_loop(jam , size, i)
 	for i in reversed(range(0 , size )):
-		index =  size + i if i %2 == 0 else size - i
-		move_forward(jam, index)
-		print jam
-		for j in range(0, i ):
-			step =  -2 if index %2 == 0 else 2
-			jump_index = index + (j+1)*step
-			jump_over(jam, jump_index)
-			print jam
+		move_loop(jam , size, i)
 	print jam
 
 
