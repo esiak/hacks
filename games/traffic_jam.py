@@ -45,17 +45,21 @@ if __name__ == '__main__':
 	for i in range(1 , size + 1):
 		index =  size + i if i %2 == 0 else size - i
 		move_forward(jam, index)
+		print jam
 		for j in range(0, i ):
 			step =  -2 if index %2 == 0 else 2
 			jump_index = index + (j+1)*step
 			jump_over(jam, jump_index)
+			print jam
 	for i in reversed(range(0 , size )):
 		index =  size + i if i %2 == 0 else size - i
 		move_forward(jam, index)
+		print jam
 		for j in range(0, i ):
 			step =  -2 if index %2 == 0 else 2
 			jump_index = index + (j+1)*step
 			jump_over(jam, jump_index)
+			print jam
 	print jam
 
 
