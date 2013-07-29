@@ -4,14 +4,14 @@ import re
 def swap(array, red, j):
 	tmp = array[red]
 	if not tmp == 'RED':
-		print 'Illegal move'
+		raise Exception("Illegal move: No RED empty space")
 		return
 	array[red] = array[j]
 	array[j] = tmp
 
 def move_forward(array, position):
 	if(array[position] == 'RED'):
-		print 'Illegal move'
+		raise Exception("Can't move forward empty space")
 		return
 	if re.match("[A-Za-z]", array[position]):
 		swap(array, position + 1, position)
@@ -20,7 +20,7 @@ def move_forward(array, position):
 
 def jump_over(array, position):
 	if(array[position] == 'RED'):
-		print 'Illegal move'
+		raise Exception("Can't jump over empty space")
 		return
 	if re.match("[A-Za-z]", array[position]):
 		swap(array, position + 2, position)
